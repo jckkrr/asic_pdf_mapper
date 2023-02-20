@@ -11,8 +11,6 @@ import streamlit.components.v1 as components
 
 import projectTools
 
-from io import StringIO
-
 ######
 
 st.write('#### CONSTITUENT INVESTIGATIVE ANALYTICS ####')
@@ -25,14 +23,11 @@ uploaded_files = st.file_uploader("", accept_multiple_files=True)
 
 for filename in uploaded_files:
     
-    st.write(filename)
-
-    #with fitz.open(stream=filename.read(), filetype="pdf") as doc:
+    #st.write(filename)
     
     with fitz.open(stream=filename.read(), filetype="pdf") as doc:    
         filetext = ""
         for page in doc:            
-            #newtext = page.getText()
             filetext += page.get_text()
             
         #st.write(filetext)
