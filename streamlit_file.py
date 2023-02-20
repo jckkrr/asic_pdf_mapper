@@ -65,6 +65,9 @@ if df.shape[0] > 0:
     
     downloadHTML = str(open(f'temp.html', 'r', encoding='utf-8').read())
     downloadHTML = downloadHTML.replace('border: 1px', 'border: 0px')
+    
+    downloadHTML = downloadHTML.replace('<div class="card" style="width: 100%">', '')
+    
     st.write(downloadHTML)
     
     #downloadHTML = downloadHTML.replace('border: 1px', 'border: 0px').replace('height: 500px;', 'height: 100%')
