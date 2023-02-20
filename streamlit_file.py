@@ -25,10 +25,12 @@ for filename in uploaded_files:
     
     st.write(filename)
     
+    doc = fitz.open(filename)
+    st.write(doc)
+        
     with fitz.open(stream=filename.read(), filetype="pdf") as doc:
         
-        doc = fitz.open(filename)
-        st.write(doc)
+        
         
         filetext = ""
         for page in doc:            
