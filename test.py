@@ -1,3 +1,5 @@
+### streamlit run "C:\Users\Jack\Documents\Python_projects\2023\asic_document_reader\test.py"
+
 import fitz
 
 import streamlit as st
@@ -5,25 +7,20 @@ import streamlit as st
 #############
 
 
-#uploaded_files = st.file_uploader("", accept_multiple_files=True)
+uploaded_file = st.file_uploader("")
 
-uploaded_files = ['http://constituent.au/2d3432373339313234383.pdf']
-
-for uploaded_file in uploaded_files:
-    
-    st.write(uploaded_file)
-
-    st.write("Filename: ", uploaded_file.name)
+st.write(uploaded_file)
+st.write("Filename: ", uploaded_file.name)
         
-    with fitz.open(stream=uploaded_file.read(), filetype="pdf") as doc:       
+with fitz.open(stream=uploaded_file.read(), filetype="pdf") as doc:       
             
-        st.write(doc)
+    st.write(doc)
         
-        for page in doc:      
+    for page in doc:      
             
-            newtext = page.getText()
+        newtext = page.getText()
             
-            st.write(newtext)
+        st.write(newtext)
             
     
     
