@@ -1,4 +1,3 @@
 PyMuPDF
-fitz
 plotly
 pyvis
