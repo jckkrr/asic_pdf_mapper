@@ -25,8 +25,9 @@ for filename in uploaded_files:
     
     st.write(filename)
     
-    doc = fitz.open(stream=filename.read(), filetype="pdf")
-    st.write(doc)
+    if filename is not None:
+        x = extract_data(filename)
+        st.write(x)
         
     with fitz.open(stream=filename.read(), filetype="pdf") as doc:
         
