@@ -5,7 +5,9 @@ import streamlit as st
 #############
 
 
-uploaded_files = st.file_uploader("", accept_multiple_files=True)
+#uploaded_files = st.file_uploader("", accept_multiple_files=True)
+
+uploaded_files = ['http://constituent.au/2d3432373339313234383.pdf']
 
 for uploaded_file in uploaded_files:
     
