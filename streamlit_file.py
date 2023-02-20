@@ -1,5 +1,6 @@
 ### streamlit run "C:\Users\Jack\Documents\Python_projects\2023\asic_document_reader\streamlit_file.py"
 
+from bs4 import BeautifulSoup
 import fitz
 import pandas as pd
 import plotly.graph_objects as go
@@ -66,10 +67,12 @@ if df.shape[0] > 0:
     downloadHTML = str(open(f'temp.html', 'r', encoding='utf-8').read())
     downloadHTML = downloadHTML.replace('border: 1px', 'border: 0px').replace('height: 500px;', 'height: 100%')
     
-    downloadHTML = downloadHTML.replace('<div class="card" style="width: 100%">', '')
+    #downloadHTML = downloadHTML.replace('<div class="card" style="width: 100%">', '')
     #downloadHTML = downloadHTML.replace('<div id="mynetwork" class="card-body"></div>\n</div>', 'XXXX')
     
-    x = re.search('<div id="mynetwork" class="card-body">(.*)', downloadHTML)
+    soup = BeautifulSoup(downloadHTML, 'html.parser')
+    
+    x = soup.find('div', {'class': 'card'})  #'<div id="mynetwork" class="card-body">(.*)', downloadHTML)
     
     st.write(x)
     
