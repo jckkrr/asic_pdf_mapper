@@ -26,8 +26,11 @@ for filename in uploaded_files:
     st.write(filename)
     
     if filename is not None:
-        x = extract_data(filename)
-        st.write(x)
+        
+        stringio = StringIO(filename.getvalue().decode("utf-8"))
+        string_data = stringio.read()
+        st.write(string_data)
+
         
     with fitz.open(stream=filename.read(), filetype="pdf") as doc:
         
