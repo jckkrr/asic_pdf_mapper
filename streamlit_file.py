@@ -67,6 +67,9 @@ if df.shape[0] > 0:
     downloadHTML = downloadHTML.replace('border: 1px', 'border: 0px')
     
     downloadHTML = downloadHTML.replace('<div class="card" style="width: 100%">', '')
+    downloadHTML = downloadHTML.replace('<div id="mynetwork" class="card-body"></div>\n</div>', 'XXXX')
+    
+    
     
     st.write(downloadHTML)
     
