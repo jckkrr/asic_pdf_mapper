@@ -23,14 +23,11 @@ uploaded_files = st.file_uploader("", accept_multiple_files=True)
 
 for filename in uploaded_files:
     
-    #st.write(filename)
+    st.write(filename)
     
     with fitz.open(stream=filename.read(), filetype="pdf") as doc:
         filetext = ""
-        for page in doc:
-            
-            st.write(page)
-            
+        for page in doc:            
             newtext = page.getText()
             filetext += newtext
         #st.write(filetext)
