@@ -70,7 +70,7 @@ if df.shape[0] > 0:
     components.html(HtmlFile.read(), height=550)
     
     downloadHTML = str(open(f'temp.html', 'r', encoding='utf-8').read())
-    downloadHTML = downloadHTML.replace('border: 1px', 'border: 0px').replace('height: 500px;', 'height: 100%')
+    
 
     ### when running deployed version, this is necessary as it puts a container around the network that affects bespoke layout updates
     soup = BeautifulSoup(downloadHTML, 'html.parser')
@@ -78,13 +78,15 @@ if df.shape[0] > 0:
     div_mynetwork = soup.find('div', {'id': 'mynetwork'}) 
     downloadHTML = str(soup).replace(str(div_card), str(div_mynetwork))
 
+    downloadHTML = downloadHTML.replace('border: 1px', 'border: 0px').replace('height: 600px;', 'height: 100%')
+    
     st.download_button(
         "Press to Download HTML",
         downloadHTML,
         "test.html"
     )
     
-    
+####### 
 st.write('')
 st.write('')
 st.write('&#11041; More tools at www.constituent.au')
