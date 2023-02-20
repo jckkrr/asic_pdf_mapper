@@ -28,6 +28,9 @@ for filename in uploaded_files:
     with fitz.open(stream=filename.read(), filetype="pdf") as doc:
         filetext = ""
         for page in doc:
+            
+            st.write(page)
+            
             newtext = page.getText()
             filetext += newtext
         #st.write(filetext)
