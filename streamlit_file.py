@@ -26,26 +26,19 @@ uploaded_files = st.file_uploader("", accept_multiple_files=True)
 for filename in uploaded_files:
     
     st.write(filename)
-    
-    if filename is not None:
-        
-        stringio = StringIO(filename.getvalue().decode("utf-8"))
-        string_data = stringio.read()
-        st.write(string_data)
 
-        
-    with fitz.open(stream=filename.read(), filetype="pdf") as doc:
-        
-        
-        
+    #with fitz.open(stream=filename.read(), filetype="pdf") as doc:
+    
+    with fitz.open(stream=filename.read(), filetype="pdf") as doc:    
         filetext = ""
         for page in doc:            
-            newtext = page.getText()
-            filetext += newtext
+            #newtext = page.getText()
+            filetext += page.get_text()
+            
         #st.write(filetext)
         
     dfx = projectTools.fromTextToDF(filetext)
-    dfx['file'] = re.findall('\'.*\.pdf', str(filename))[0][1:]
+    dfx['file'] = filename.name
     
     df = pd.concat([df, dfx])
     df = df.reset_index(drop=True)
