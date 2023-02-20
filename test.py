@@ -16,7 +16,10 @@ if uploaded_file != None:
         st.write(doc.page_count)
         
         filetext = ""
-        for page in doc:            
+        for page in doc: 
+            
+            st.write(page)
+            
             newtext = page.getText()
             filetext += newtext
             
