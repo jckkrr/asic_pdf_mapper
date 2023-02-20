@@ -11,6 +11,8 @@ import streamlit.components.v1 as components
 
 import projectTools
 
+from io import StringIO
+
 ######
 
 st.write('#### CONSTITUENT INVESTIGATIVE ANALYTICS ####')
