@@ -67,14 +67,14 @@ if df.shape[0] > 0:
     downloadHTML = str(open(f'temp.html', 'r', encoding='utf-8').read())
     downloadHTML = downloadHTML.replace('border: 1px', 'border: 0px').replace('height: 500px;', 'height: 100%')
 
-
-    
     soup = BeautifulSoup(downloadHTML, 'html.parser')
-    x = soup.find('div', {'class': 'card'})  #'<div id="mynetwork" class="card-body">(.*)', downloadHTML)
-    st.write(str(x))
+    div_card = soup.find('div', {'class': 'card'})  
+    div_mynetwork = soup.find('div', {'id': 'mynetwork'}) 
+    st.write(str(div_card))
+    st.write(str(div_mynetwork))
+    
+    downloadHTML = str(soup).replace(str(div_card), str(div_mynetwork))
 
-    downloadHTML = downloadHTML.replace('<div class="card" style="width: 100%">', '')
-    downloadHTML = downloadHTML.replace('<div id="mynetwork" class="card-body"></div></div>', 'XXXX')
     
     #downloadHTML = downloadHTML.replace('border: 1px', 'border: 0px').replace('height: 500px;', 'height: 100%')
     #st.write(downloadHTML)
