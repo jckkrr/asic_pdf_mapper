@@ -63,9 +63,12 @@ if df.shape[0] > 0:
     HtmlFile = open(f'temp.html', 'r', encoding='utf-8')
     components.html(HtmlFile.read(), height=500)
     
-    downloadHTML = str(open(f'temp.html', 'r', encoding='utf-8').read()).replace('border: 1px', 'border: 0px').replace('height: 500px;', 'height: 100%')
+    downloadHTML = str(open(f'temp.html', 'r', encoding='utf-8').read())
     
     st.write(downloadHTML)
+    
+    #downloadHTML = downloadHTML.replace('border: 1px', 'border: 0px').replace('height: 500px;', 'height: 100%')
+    #st.write(downloadHTML)
     
     st.download_button(
         "Press to Download HTML",
