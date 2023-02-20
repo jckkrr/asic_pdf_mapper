@@ -13,9 +13,10 @@ for uploaded_file in uploaded_files:
 
     st.write("Filename: ", uploaded_file.name)
         
-    #with fitz.open(stream=uploaded_file.read(), filetype="pdf") as doc:
     with fitz.open(stream=uploaded_file.read(), filetype="pdf") as doc:       
             
+        st.write(doc)
+        
         for page in doc:      
             
             newtext = page.getText()
