@@ -1,6 +1,5 @@
 ### streamlit run "C:\Users\Jack\Documents\Python_projects\2023\asic_document_reader\streamlit_file.py"
 
-import fitz
 import pandas as pd
 import plotly.graph_objects as go
 from pyvis.network import Network
@@ -52,6 +51,8 @@ if df.shape[0] > 0:
     df = df.loc[df['company_name'] != df['value']]
     
     st.dataframe(df)
+    
+    import fitz
     
     G = projectTools.plotNetwork(df)
     
