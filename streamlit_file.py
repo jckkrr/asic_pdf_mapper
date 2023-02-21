@@ -19,7 +19,7 @@ st.write('Constituent Investigative Analytics')
 
 st.write('# ASIC MAPPER #####')
 
-st.write('Fed in your CSVs. Eat up the network map.') 
+st.write('Fed in your ASIC Business Registry PDFs. It will return an interactive network map.') 
 
 #########################
 
