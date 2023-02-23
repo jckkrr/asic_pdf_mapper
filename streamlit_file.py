@@ -9,6 +9,7 @@ import pyvis
 import re
 import streamlit as st
 import streamlit.components.v1 as components
+import time
 
 import projectTools
 
@@ -107,10 +108,12 @@ if df.shape[0] > 0:
     downloadHTML = downloadHTML.replace('border: 1px', 'border: 0px').replace('height: 600px;', 'height: 100%')
     downloadHTML = downloadHTML.replace('</head>', '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;900&display=swap"></head>')  ### add font
     
+    saved_filename = 'asic_network_map_' + time.strftime("%Y%m%d%H%M%S")
+
     st.download_button(
         "Press to Download HTML",
         downloadHTML,
-        "test.html"
+        f"{saved_filename}.html"
     )
     
 ####### 
