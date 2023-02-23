@@ -51,18 +51,44 @@ if df.shape[0] > 0:
     initial_selections = [x for x in initial_selections if x in keys]
     
     selected_keys = st.multiselect(
-        'Which row types (keys) to include:',
+        'Which key types you would like to include:',
         keys,
         initial_selections)  
     
     df = df.loc[df['key'].isin(selected_keys)]
     df = df.loc[df['company_name'] != df['value']]
     
-    st.dataframe(df)
-        
-    G = projectTools.plotNetwork(df)
     
-    ### display
+    ### Because names can appear in various guises, here they can be updated
+    node_labels =  sorted(df['value'].unique())
+    
+    selected_labels = st.multiselect(
+        'Select a node you would like to update',
+        node_labels
+    )
+    
+    updated_labels = st.text_input('Change names to (Please seperate by comma)', '')
+    updated_labels = updated_labels.split(',')
+    
+    for selected_label in selected_labels:
+        
+        n = selected_labels.index(selected_label)
+        
+        updated_label = selected_label
+        if len(selected_labels) == len(updated_labels):
+            updated_label = updated_labels[n].strip()
+                    
+        df.loc[df['value'] == selected_label, 'value'] = updated_label
+    
+    ###
+    
+    st.dataframe(df, height=250)
+    
+    #### Get network
+    
+    G = projectTools.plotNetwork(df)
+
+    ### Display network
     path = '/tmp'
     G.save_graph(f'temp.html')
     
