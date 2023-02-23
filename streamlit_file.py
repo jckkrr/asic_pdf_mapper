@@ -105,6 +105,7 @@ if df.shape[0] > 0:
     downloadHTML = str(soup).replace(str(div_card), str(div_mynetwork))
 
     downloadHTML = downloadHTML.replace('border: 1px', 'border: 0px').replace('height: 600px;', 'height: 100%')
+    downloadHTML = downloadHTML.replace('</head>', '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;900&display=swap"></head>')  ### add font
     
     st.download_button(
         "Press to Download HTML",

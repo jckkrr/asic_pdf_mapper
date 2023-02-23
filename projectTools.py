@@ -94,6 +94,9 @@ def plotNetwork(df):
         else:
             node['color'] = 'rgba(0, 150, 100, 0.6)'
             
+        node['font'] = str(7 + int(dfVC[node['id']]) ** 0.75) + ' manrope #181818'
+        
+            
     pyvis.options.Layout(improvedLayout=True)
     
     #g.show(f'XXX.html')
